@@ -11,7 +11,7 @@ namespace FinancesTracking.View
 {
     public class ShowCategoryUserExpensesUI
     {
-        private ShowCategoryExpensesController controller = new ShowCategoryExpensesController();
+        private ShowCategoryUserExpensesController controller = new ShowCategoryUserExpensesController();
 
         private void Header()
         {
@@ -77,7 +77,7 @@ namespace FinancesTracking.View
             } while (category == null);
 
 
-            List<Expense> expenses = controller.GetCategoryExpenses(category);
+            List<Expense> expenses = controller.GetCategoryExpenses(category, user);
 
             ShowExpensesList(expenses);
 
