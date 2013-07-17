@@ -112,6 +112,11 @@ namespace FinancesTracking.View
                             showMonthExpenses.Run();
                             break;
 
+                        case SHOW_CATEGORY_EXPENSES:
+                            ShowCategoryExpensesUI showCategoryExpenses = new ShowCategoryExpensesUI();
+                            showCategoryExpenses.Run();
+                            break;
+
                         case SHOW_INCOMINGS:
                             //TODO some code
                             break;
@@ -119,7 +124,7 @@ namespace FinancesTracking.View
                         case SHOW_SAVINGS:
                             //TODO some code
                             break;
-                        
+
                         case EXIT:
                             Console.WriteLine("Exiting...");
                             break;
