@@ -24,9 +24,17 @@ namespace FinancesTracking.View
 
         private const int SHOW_USER_EXPENSES = 6;
 
-        private const int SHOW_INCOMINGS = 7;
+        private const int SHOW_MONTH_EXPENSES = 7;
 
-        private const int SHOW_SAVINGS = 8;
+        private const int SHOW_CATEGORY_EXPENSES = 8;
+
+        private const int SHOW_CATEGORY_MONTH_EXPENSES = 9;
+
+        private const int SHOW_CATEGORY_USER_EXPENSES = 10;
+
+        private const int SHOW_INCOMINGS = 11;
+
+        private const int SHOW_SAVINGS = 12;
 
 
         private FinancesTrackingUI() { }
@@ -44,9 +52,13 @@ namespace FinancesTracking.View
 
             Console.WriteLine("4. Show balance");
             Console.WriteLine("5. Show all expenses");
-            Console.WriteLine("5. Show user expenses");
-            Console.WriteLine("6. Show incomes");
-            Console.WriteLine("7. Show savings");
+            Console.WriteLine("6. Show user's expenses");
+            Console.WriteLine("7. Show expenses by month");
+            Console.WriteLine("8. Show expenses by category");
+            Console.WriteLine("9. Show expenses by category and month");
+            Console.WriteLine("10. Show expenses by category and user");
+            Console.WriteLine("11. Show incomes");
+            Console.WriteLine("12. Show savings");
 
             Console.WriteLine("0. Exit");
 
@@ -93,6 +105,11 @@ namespace FinancesTracking.View
                         case SHOW_USER_EXPENSES:
                             ShowUsersExpensesUI showUserExpenses = new ShowUsersExpensesUI();
                             showUserExpenses.Run();
+                            break;
+
+                        case SHOW_MONTH_EXPENSES:
+                            ShowMonthExpensesUI showMonthExpenses = new ShowMonthExpensesUI();
+                            showMonthExpenses.Run();
                             break;
 
                         case SHOW_INCOMINGS:
