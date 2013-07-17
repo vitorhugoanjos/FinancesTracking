@@ -1,0 +1,21 @@
+title Show expenses by user
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+ShowUserExpensesUI:Run()
+ShowUserExpensesUI->ShowUserExpensesUI:GetUser()
+ShowUserExpensesUI->+UsersRepository:GetUsers()
+UsersRepository-->-ShowUserExpensesUI:<<return users>>
+ShowUserExpensesUI->+ShowUserExpensesController:GetUserExpenses(user)
+ShowUserExpensesController->+ExpensesRepository:GetAllExpenses()
+ExpensesRepository-->-ShowUserExpensesController:<<return expenses>>
+loop loop expenses list
+    opt expense.user in expenses != user
+    ShowUserExpensesController->ShowUserExpensesController:expenses.Remove(expense)
+end
+end
+
+
+ShowUserExpensesController-->-ShowUserExpensesUI:<<return expenses>>
+
+ShowUserExpensesUI->-ShowUserExpensesUI:ListExpenses()
