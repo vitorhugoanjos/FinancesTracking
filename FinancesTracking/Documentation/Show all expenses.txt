@@ -1,0 +1,11 @@
+title Show all expenses
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+ShowExpensesUI:Run()
+ShowExpensesUI->+ShowExpensesController:GetAllExpenses()
+ShowExpensesController->+ExpensesRepository:GetAllExpenses()
+ExpensesRepository-->-ShowExpensesController:<<return expenses>>
+ShowExpensesController-->-ShowExpensesUI:<<return expenses>>
+ShowExpensesUI->-ShowExpensesUI:List()
+
