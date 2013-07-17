@@ -33,9 +33,14 @@ namespace FinancesTracking.View
         }
 
         private void ShowExpensesList(List<Expense> expenses)
-        { 
-            foreach(Expense expense in expenses)
-                Console.WriteLine(expense);
+        {
+            if (expenses.Count > 0)
+
+                foreach (Expense expense in expenses)
+                    Console.WriteLine(expense);
+
+            else
+                Console.WriteLine("This user has no expenses");
             
         }
 

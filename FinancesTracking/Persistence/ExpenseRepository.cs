@@ -42,10 +42,13 @@ namespace FinancesTracking.Persistence
         {
             List<Model.Expense> userExpenses = new List<Model.Expense>();
 
-            foreach (Model.Expense expense in expenses)
-            {
-                if (expense.User.Name.Equals(user.Name))
-                    userExpenses.Add(expense);
+            if (expenses.Count > 0)
+            { 
+                foreach (Model.Expense expense in expenses)
+                {
+                    if (expense.User.Name.Equals(user.Name))
+                        userExpenses.Add(expense);
+                }
             }
 
             return userExpenses;
