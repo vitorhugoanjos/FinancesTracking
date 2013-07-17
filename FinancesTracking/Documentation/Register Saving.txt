@@ -1,0 +1,17 @@
+title Register Saving
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+RegisterSavingUI:Run()
+RegisterSavingUI->RegisterSavingUI:GetUser()
+RegisterSavingUI->+UsersRepository:GetUsers()
+UsersRepository-->-RegisterSavingUI:<<return users>>
+RegisterSavingUI->RegisterSavingUI:GetAmount("goal")
+RegisterSavingUI->RegisterSavingUI:GetAmount("initial")
+RegisterSavingUI->RegisterSavingUI:GetComment()
+RegisterSavingUI->+RegisterSavingController:CreateSaving((user,goalName,coment,goalAmount,initialAmount)
+RegisterSavingController->+Saving:new((user,goalName,coment,goalAmount,initialAmount)
+Saving-->-RegisterSavingController:<<return saving>>
+RegisterSavingController->+SavingsRepository:RegisterSaving(saving)
+SavingsRepository->-SavingsRepository:Save()
+
