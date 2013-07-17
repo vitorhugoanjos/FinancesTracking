@@ -16,6 +16,7 @@ namespace FinancesTracking
         {
             UsersBootstrapper users = new UsersBootstrapper();
             CategoryBootstrapper categories = new CategoryBootstrapper();
+            ExpensesBootstrapper expenses = new ExpensesBootstrapper();
             FinancesTrackingUI.GetUI().Run();
         }
     }
