@@ -39,7 +39,7 @@ namespace FinancesTracking.Model
 
         public override string ToString()
         {
-            return "[" + Category + "] " + Comment + " - " + Amount;
+            return "[" + Category + "] " + Comment + " - " + Amount + "euros.";
         }
     }
 }

@@ -12,5 +12,6 @@ namespace FinancesTracking.Persistence
         void RegisterExpense(Expense expense);
         void RemoveExpense(Expense expense);
         List<Expense> GetAllExpenses();
+        List<Expense> GetUserExpenses(User user);
     }
 }

@@ -37,5 +37,18 @@ namespace FinancesTracking.Persistence
         {
             return expenses;
         }
+
+        public List<Model.Expense> GetUserExpenses(Model.User user)
+        {
+            List<Model.Expense> userExpenses = new List<Model.Expense>();
+
+            foreach (Model.Expense expense in expenses)
+            {
+                if (expense.User.Name.Equals(user.Name))
+                    userExpenses.Add(expense);
+            }
+
+            return userExpenses;
+        }
     }
 }
