@@ -1,0 +1,21 @@
+title Show expenses by category
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+ShowCategoryExpensesUI:Run()
+ShowCategoryExpensesUI->ShowCategoryExpensesUI:GetCategory()
+ShowCategoryExpensesUI->+CategoriesRepository:GetAllCategories()
+CategoriesRepository-->-ShowCategoryExpensesUI:<<return categories>>
+ShowCategoryExpensesUI->+ShowCategoryExpensesController:GetCategoryExpenses(category)
+ShowCategoryExpensesController->+ExpensesRepository:GetAllExpenses()
+ExpensesRepository-->-ShowCategoryExpensesController:<<return expenses>>
+loop loop expenses list
+    opt expense.category in expenses != category
+    ShowCategoryExpensesController->ShowCategoryExpensesController:expenses.Remove(expense)
+end
+end
+
+
+ShowCategoryExpensesController-->-ShowCategoryExpensesUI:<<return expenses>>
+
+ShowCategoryExpensesUI->-ShowCategoryExpensesUI:ListExpenses()
