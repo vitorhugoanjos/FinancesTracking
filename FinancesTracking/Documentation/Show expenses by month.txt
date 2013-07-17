@@ -1,0 +1,19 @@
+title Show expenses by month
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+ShowMonthExpensesUI:Run()
+ShowMonthExpensesUI->ShowMonthExpensesUI:GetMonth()
+ShowMonthExpensesUI->+ShowMonthExpensesController:GetMonthExpenses(month)
+ShowMonthExpensesController->+ExpensesRepository:GetAllExpenses()
+ExpensesRepository-->-ShowMonthExpensesController:<<return expenses>>
+loop loop expenses list
+    opt expense.date in expenses != month
+    ShowMonthExpensesController->ShowMonthExpensesController:expenses.Remove(expense)
+end
+end
+
+
+ShowMonthExpensesController-->-ShowMonthExpensesUI:<<return expenses>>
+
+ShowMonthExpensesUI->-ShowMonthExpensesUI:ListExpenses()
