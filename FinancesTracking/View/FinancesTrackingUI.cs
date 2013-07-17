@@ -38,7 +38,7 @@ namespace FinancesTracking.View
         {
             Console.WriteLine("1. Register expense");
             Console.WriteLine("2. Register income");
-            Console.WriteLine("3. Register daving");
+            Console.WriteLine("3. Register saving");
 
             Console.WriteLine("4. Show balance");
             Console.WriteLine("5. Show expenses");
@@ -68,19 +68,23 @@ namespace FinancesTracking.View
                             break;
 
                         case REGISTER_INCOME:
-                            
+                            RegisterIncomeUI registerIncome = new RegisterIncomeUI();
+                            registerIncome.Run();
                             break;
 
                         case REGISTER_SAVING:
-                            //TODO some code
+                            RegisterSavingUI registerSaving = new RegisterSavingUI();
+                            registerSaving.Run();
                             break;
 
                         case SHOW_BALANCE:
-                            //TODO some code
+                            ShowBalanceUI showBalance = new ShowBalanceUI();
+                            showBalance.Run();
                             break;
 
                         case SHOW_EXPENSES:
-                            //TODO some code
+                            ShowExpensesUI showExpenses = new ShowExpensesUI();
+                            showExpenses.Run();
                             break;
 
                         case SHOW_INCOMINGS:

@@ -1,0 +1,16 @@
+title Register Income
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+RegisterIncomeUI:Run()
+RegisterIncomeUI->RegisterIncomeUI:GetUser()
+RegisterIncomeUI->+UsersRepository:GetUsers()
+UsersRepository-->-RegisterIncomeUI:<<return users>>
+RegisterIncomeUI->RegisterIncomeUI:GetAmount()
+RegisterIncomeUI->RegisterIncomeUI:GetDescription()
+RegisterIncomeUI->+RegisterIncomeController:CreateIncome(user,amount,description)
+RegisterIncomeController->+Income:new(user,amount,description)
+Income-->-RegisterIncomeController:<<return income>>
+RegisterIncomeController->+IncomesRepository:RegisterIncome(income)
+IncomesRepository->-IncomesRepository:Save()
+
