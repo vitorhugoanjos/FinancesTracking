@@ -123,6 +123,11 @@ namespace FinancesTracking.View
                             showCategoryUserExpenses.Run();
                             break;
 
+                        case SHOW_CATEGORY_MONTH_EXPENSES:
+                            ShowCategoryMonthExpensesUI showCategoryMonthExpenses = new ShowCategoryMonthExpensesUI();
+                            showCategoryMonthExpenses.Run();
+                            break;
+
                         case SHOW_INCOMINGS:
                             //TODO some code
                             break;
