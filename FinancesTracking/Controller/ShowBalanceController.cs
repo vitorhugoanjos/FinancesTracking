@@ -9,7 +9,7 @@ namespace FinancesTracking.Controller
 {
     public class ShowBalanceController
     {
-        public double GetBalance(User user)
+        public decimal GetBalance(User user)
         {
             return user.Balance;
         }
