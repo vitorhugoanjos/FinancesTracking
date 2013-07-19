@@ -168,6 +168,11 @@ namespace FinancesTracking.View
                             insertSavingCash.Run();
                             break;
 
+                        case TAKE_SAVING_CASH:
+                            TakeSavingCashUI takeSavingCash = new TakeSavingCashUI();
+                            takeSavingCash.Run();
+                            break;
+
                         case EXIT:
                             Console.WriteLine("Exiting...");
                             break;
