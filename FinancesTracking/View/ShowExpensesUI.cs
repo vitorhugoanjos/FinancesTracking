@@ -8,25 +8,14 @@ using FinancesTracking.Model;
 
 namespace FinancesTracking.View
 {
-    public class ShowExpensesUI
+    public class ShowExpensesUI:BaseUI
     {
         private ShowExpensesController controller = new ShowExpensesController();
-
-        private void Header()
-        {
-            Console.WriteLine(" << SHOW ALL EXPENSES >> \n");
-        }
-
-        private void ShowExpensesList(List<Expense> expenses)
-        {
-            foreach (Expense expense in expenses)
-                Console.WriteLine(expense);
-        }
-        
+     
         public void Run()
         {
-            Header();
-            ShowExpensesList(controller.GetAllExpenses());
+            Header("SHOW ALL EXPENSES");
+            PrintList(controller.GetAllExpenses(), "There are no expenses registered");
         }
     }
 }
