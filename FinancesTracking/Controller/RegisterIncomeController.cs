@@ -10,7 +10,7 @@ namespace FinancesTracking.Controller
 {
     public class RegisterIncomeController
     {
-        public void CreateIncome(User user, double amount, string description) 
+        public void CreateIncome(User user, decimal amount, string description) 
         {
             Income income = new Income(user, amount, description);
             Factory.GetFactory().GetIncomesRepository().RegisterIncome(income);

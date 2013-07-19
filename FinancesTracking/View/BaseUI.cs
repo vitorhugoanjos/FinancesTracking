@@ -16,7 +16,7 @@ namespace FinancesTracking.View
             Console.WriteLine(" << " + option + " >> \n");
         }
 
-        public void PrintList(List<Saving> list, string text)
+        protected void PrintList(List<Saving> list, string text)
         {
             if (list.Count > 0)
                 foreach (Saving saving in list)
@@ -25,7 +25,7 @@ namespace FinancesTracking.View
                 Console.WriteLine(text);
         }
 
-        public void PrintList(List<Expense> list, string text)
+        protected void PrintList(List<Expense> list, string text)
         {
             if (list.Count > 0)
                 foreach (Expense expense in list)
@@ -34,7 +34,7 @@ namespace FinancesTracking.View
                 Console.WriteLine(text);
         }
 
-        public void PrintList(List<Income> list, string text)
+        protected void PrintList(List<Income> list, string text)
         {
             if (list.Count > 0)
                 foreach (Income income in list)
@@ -43,7 +43,15 @@ namespace FinancesTracking.View
                 Console.WriteLine(text);
         }
 
-        public int GetMonth()
+        protected decimal GetAmount()
+        {
+            decimal amount;
+            Console.WriteLine("Insert amount: ");
+            Decimal.TryParse(Console.ReadLine(), out amount);
+            return amount;
+        }
+
+        protected int GetMonth()
         {
             int month;
             Console.WriteLine("Which month do you want to consult?");
@@ -53,7 +61,7 @@ namespace FinancesTracking.View
             return month;
         }
 
-        public Category GetCategory()
+        protected Category GetCategory()
         {
             Console.WriteLine("Choose a category: ");
 
@@ -67,7 +75,7 @@ namespace FinancesTracking.View
             return Factory.GetFactory().GetCategoriesRepository().GetCategory(name);
         }
 
-        public User GetUser()
+        protected User GetUser()
         {
             User user;
             do
@@ -86,6 +94,12 @@ namespace FinancesTracking.View
            
 
             return user ;
+        }
+
+        protected String GetComment()
+        {
+            Console.WriteLine("Write a comment: ");
+            return Console.ReadLine();
         }
 
     }

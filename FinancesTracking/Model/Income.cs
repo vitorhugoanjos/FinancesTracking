@@ -8,25 +8,25 @@ namespace FinancesTracking.Model
 {
     public class Income
     {
-        public double Amount { get; private set; }
+        public decimal Amount { get; private set; }
 
         public string Description { get; private set; }
 
         public User User { get; private set; }
 
-        public Income(User user, double amount, string description)
+        public Income(User user, decimal amount, string description)
         {
             User = user;
             Amount = amount;
             Description = description;
-            User.ReceiveMoney(amount);
+            User.DepositCash(amount);
         }
 
         public Income() { }
 
         public override string ToString()
         {
-            return Description + " - " + Amount;  
+            return Description + " - " + Amount + " euros.";  
         }
     }
 }
