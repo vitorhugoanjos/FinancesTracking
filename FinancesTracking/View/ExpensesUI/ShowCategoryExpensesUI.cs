@@ -9,56 +9,19 @@ using FinancesTracking.Controller;
 
 namespace FinancesTracking.View
 {
-    public class ShowCategoryExpensesUI
+    public class ShowCategoryExpensesUI : BaseUI
     {
         private ShowCategoryExpensesController controller = new ShowCategoryExpensesController();
-
-        private void Header()
-        {
-            Console.WriteLine(" << SHOW CATEGORY'S EXPENSES  >> \n");
-        }
-
-        private Category GetCategory()
-        {
-            Console.WriteLine("Choose a category: ");
-
-            foreach (Category _category in Factory.GetFactory().GetCategoriesRepository().GetAllCategories())
-            {
-                Console.WriteLine(_category.Name);
-            }
-
-            string name = Console.ReadLine();
-
-            return Factory.GetFactory().GetCategoriesRepository().GetCategory(name);
-        }
-
-        private void ShowExpensesList(List<Expense> expenses)
-        {
-            if (expenses.Count > 0)
-
-                foreach (Expense expense in expenses)
-                    Console.WriteLine(expense);
-
-            else
-                Console.WriteLine("This category has no expenses");
-
-        }
 
         public void Run()
         {
             Category category;
 
-            Header();
-
-            do
-            {
-                category = GetCategory();
-
-            } while (category == null);
+            Header("SHOW CATEGORY'S EXPENSES");
+            category = GetCategory();
 
             List<Expense> expenses = controller.GetCategoryExpenses(category);
-
-            ShowExpensesList(expenses);
+            PrintList(expenses, "This category has no expenses");
 
         }
     }
