@@ -11,10 +11,18 @@ namespace FinancesTracking.Controller
     public class RegisterExpenseController
     {
 
-        public void CreateExpense(User user, string comment, double amount, Category category, DateTime date)
-        { 
-            Expense expense = new Expense(user, comment, amount, category, date);
-            Factory.GetFactory().GetExpensesRepository().RegisterExpense(expense);
+        public void CreateExpense(User user, string comment, decimal amount, Category category, DateTime date)
+        {
+            if (CanCreateExpense(user, amount))
+            {
+                Expense expense = new Expense(user, comment, amount, category, date);
+                Factory.GetFactory().GetExpensesRepository().RegisterExpense(expense);
+            }
+        }
+
+        public Boolean CanCreateExpense(User user, decimal amount)
+        {
+            return user.CanWidthraw(amount);
         }
     }
 }

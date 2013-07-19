@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FinancesTracking.Model;
+using FinancesTracking.Controller;
 using FinancesTracking.Persistence;
 
 namespace FinancesTracking.Bootstrapper
@@ -12,10 +13,16 @@ namespace FinancesTracking.Bootstrapper
     {
         public ExpensesBootstrapper()
         {
-            Factory.GetFactory().GetExpensesRepository().RegisterExpense(new Expense(Factory.GetFactory().GetUsersRepository().GetUser("Vitor"),"Cachorro",2,Factory.GetFactory().GetCategoriesRepository().GetCategory("Alimentacao"),DateTime.Today));
-            Factory.GetFactory().GetExpensesRepository().RegisterExpense(new Expense(Factory.GetFactory().GetUsersRepository().GetUser("Vitor"), "Fanta", 1, Factory.GetFactory().GetCategoriesRepository().GetCategory("Alimentacao"), DateTime.Today));
-            Factory.GetFactory().GetExpensesRepository().RegisterExpense(new Expense(Factory.GetFactory().GetUsersRepository().GetUser("Joao"), "Chocolate", 0.70, Factory.GetFactory().GetCategoriesRepository().GetCategory("Alimentacao"), DateTime.Today));
-            Factory.GetFactory().GetExpensesRepository().RegisterExpense(new Expense(Factory.GetFactory().GetUsersRepository().GetUser("Joao"), "Sumo", 0.70, Factory.GetFactory().GetCategoriesRepository().GetCategory("Alimentacao"), new DateTime(2013,6,5)));
+            RegisterExpenseController controller = new RegisterExpenseController();
+            User vitor = Factory.GetFactory().GetUsersRepository().GetUser("Vitor");
+            User joao = Factory.GetFactory().GetUsersRepository().GetUser("Joao");
+            Category alimentacao = Factory.GetFactory().GetCategoriesRepository().GetCategory("Alimentacao");
+            //Category lazer = Factory.GetFactory().GetCategoriesRepository().GetCategory("Lazer");
+
+
+            controller.CreateExpense(vitor, "Cachorro", 2m, alimentacao, DateTime.Today);
+            controller.CreateExpense(vitor, "Fanta", 1m, alimentacao, DateTime.Today);
+            controller.CreateExpense(joao, "Sumo", 0.70m, alimentacao, new DateTime(2013, 6, 5));
         }
     }
 }
