@@ -138,7 +138,8 @@ namespace FinancesTracking.View
                             break;
 
                         case SHOW_INCOMINGS:
-                           
+                            ShowAllIncomesUI showAllIncomes = new ShowAllIncomesUI();
+                            showAllIncomes.Run();
                             break;
 
                         case SHOW_USER_INCOMINGS:
