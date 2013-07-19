@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinancesTracking.View.IncomesUI;
 
 namespace FinancesTracking.View
 {
@@ -34,9 +35,13 @@ namespace FinancesTracking.View
 
         private const int SHOW_INCOMINGS = 11;
 
-        private const int SHOW_SAVINGS = 12;
+        private const int SHOW_USER_INCOMINGS = 12;
 
-        private const int SHOW_USERS_SAVINGS = 13;
+        private const int SHOW_MONTH_INCOMINGS = 13;
+
+        private const int SHOW_SAVINGS = 14;
+
+        private const int SHOW_USERS_SAVINGS = 15;
 
 
         private FinancesTrackingUI() { }
@@ -61,8 +66,9 @@ namespace FinancesTracking.View
             Console.WriteLine("10. Show expenses by category and month");
 
             Console.WriteLine("11. Show incomes");
-            Console.WriteLine("12. Show all savings");
-            Console.WriteLine("13. Show user's savings");
+            Console.WriteLine("12. Show user's incomes");
+            Console.WriteLine("13. Show all savings");
+            Console.WriteLine("114. Show user's savings");
 
             Console.WriteLine("0. Exit");
 
@@ -132,7 +138,12 @@ namespace FinancesTracking.View
                             break;
 
                         case SHOW_INCOMINGS:
-                            //TODO some code
+                           
+                            break;
+
+                        case SHOW_USER_INCOMINGS:
+                            ShowUserIncomesUI showUserIncomes = new ShowUserIncomesUI();
+                            showUserIncomes.Run();
                             break;
 
                         case SHOW_SAVINGS:

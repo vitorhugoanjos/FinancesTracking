@@ -8,7 +8,7 @@ using FinancesTracking.Persistence;
 
 namespace FinancesTracking.Controller
 {
-    public class ShowIncomesController
+    public class ShowUserIncomesController
     {
         public List<Income> GetUserIncomes(User user)
         {

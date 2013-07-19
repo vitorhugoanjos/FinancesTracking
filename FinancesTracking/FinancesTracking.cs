@@ -18,6 +18,7 @@ namespace FinancesTracking
             CategoryBootstrapper categories = new CategoryBootstrapper();
             ExpensesBootstrapper expenses = new ExpensesBootstrapper();
             SavingsBootstrapper savings = new SavingsBootstrapper();
+            IncomingsBootstrapper incomes = new IncomingsBootstrapper();
             FinancesTrackingUI.GetUI().Run();
         }
     }
