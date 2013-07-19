@@ -9,40 +9,17 @@ using FinancesTracking.Controller;
 
 namespace FinancesTracking.View
 {
-    public class ShowMonthExpensesUI
+    public class ShowMonthExpensesUI : BaseUI
     {
 
         private ShowMonthExpensescontroller controller = new ShowMonthExpensescontroller();
 
-        private void Header()
-        {
-            Console.WriteLine(" << SHOW MONTH EXPENSES >> \n");
-        }
-
-        private void ShowExpensesList(List<Expense> expenses)
-        {
-            if (expenses.Count > 0)
-                foreach (Expense expense in expenses)
-                    Console.WriteLine(expense);
-            else
-                Console.WriteLine("There were no expenses registered in this month\n");
-        }
-
-        private int GetMonth()
-        {
-            int month;
-            Console.WriteLine("Which month do you want to consult?");
-            int.TryParse(Console.ReadLine(), out month);
-
-            return month;
-        }
-
         public void Run()
         {
-            Header();
+            Header("SHOW MONTH EXPENSES");
 
             List<Expense> expenses = controller.GetMonthExpenses(GetMonth());
-            ShowExpensesList(expenses);
+            PrintList(expenses,"There were no expenses registered in this month");
 
         }
 
