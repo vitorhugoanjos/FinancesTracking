@@ -9,7 +9,7 @@ using FinancesTracking.Controller;
 
 namespace FinancesTracking.View
 {
-    public class ShowCategoryMonthExpensesUI:BaseUI
+    public class ShowCategoryMonthExpensesUI : BaseUI
     {
 
         private ShowCategoryMonthExpensescontroller controller = new ShowCategoryMonthExpensescontroller();
@@ -19,14 +19,9 @@ namespace FinancesTracking.View
             Category category;
 
             Header("SHOW MONTH/CATEGORY EXPENSES");
+            category = GetCategory();
 
-            do
-            {
-                category = GetCategory();
-
-            } while (category == null);
-
-            PrintList(controller.GetMonthExpenses(GetMonth(), category),"There were no expenses registered in this month with this category");
+            PrintList(controller.GetMonthExpenses(GetMonth(), category), "There were no expenses registered in this month with this category");
 
         }
 
