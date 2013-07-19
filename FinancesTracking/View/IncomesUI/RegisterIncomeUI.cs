@@ -10,7 +10,7 @@ using FinancesTracking.Persistence;
 
 namespace FinancesTracking.View
 {
-    public class RegisterIncomeUI:BaseUI
+    public class RegisterIncomeUI : BaseUI
     {
         private RegisterIncomeController controller = new RegisterIncomeController();
 

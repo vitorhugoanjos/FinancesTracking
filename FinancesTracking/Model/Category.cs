@@ -25,7 +25,7 @@ namespace FinancesTracking.Model
 
         public override string ToString()
         {
-            return Name;
+            return Name.ToUpper();
         }
 
     }
