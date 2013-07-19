@@ -1,0 +1,16 @@
+title Insert cash into saving
+
+FinancesTracking->+FinancesTrackingUI:Run()
+FinancesTrackingUI->FinancesTrackingUI:ShowMenu()
+FinancesTrackingUI->+InsertSavingCashUI:Run()
+InsertSavingCashUI->InsertSavingCashUI:GetAmount()
+InsertSavingCashUI->InsertSavingCashUI:GetSaving()
+InsertSavingCashUI->+SavingsRepository:GetSaving()
+SavingsRepository-->-InsertSavingCashUI:<<return categories>>
+InsertSavingCashUI->+InsertSavingCashController:InsertCash(amount)
+InsertSavingCashController->+Saving:DepositCash(amount)
+Saving-->-InsertSavingCashController:<<return result string>>
+
+InsertSavingCashController-->-InsertSavingCashUI:<<return result string>>
+
+InsertSavingCashUI->-InsertSavingCashUI:GiveFeedback()
