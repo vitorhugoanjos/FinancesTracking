@@ -32,6 +32,7 @@ namespace FinancesTracking.Model
         {
              if(checker.CanWithdraw(amount))
              {
+                 checker.Withdraw(amount);
                  Balance = checker.GetBalance();
              }
         }
