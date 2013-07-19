@@ -13,58 +13,63 @@ namespace FinancesTracking.Model
 
         public string Description { get; private set; }
 
-        public double GoalAmount { get; private set; }
+        public decimal GoalAmount { get; private set; }
 
-        public double InitialAmount { get; private set; }
+        public decimal InitialAmount { get; private set; }
 
-        public double CurrentAmount { get; private set; }
+        public decimal CurrentAmount { get; private set; }
 
         public bool HasReachedGoal { get; private set; }
 
         public User User { get; private set; }
 
 
-        public Saving(User user, string goalName, string description, double goalAmount, double initialAmount)
+        public Saving(User user, string goalName, string description, decimal goalAmount, decimal initialAmount)
         {
             User = user;
             GoalName = goalName;
             Description = description;
             GoalAmount = goalAmount;
             InitialAmount = initialAmount;
-            User.UseMoney(initialAmount);
+            User.WithdrawCash(initialAmount);
+            DepositCash(initialAmount);
         }
 
 
         public Saving() { }
 
-        public int putMoney(double amount)
+        public string DepositCash(decimal cashToDeposit)
         {
-            if((CurrentAmount + amount) > GoalAmount)
-                return -1;
+            if ((CurrentAmount + cashToDeposit) > GoalAmount)
+                return "EXCEEDS_GOAL";
 
-            if ((CurrentAmount + amount) == GoalAmount)
+            if ((CurrentAmount + cashToDeposit) == GoalAmount)
             {
-                CurrentAmount += amount;
+                CurrentAmount += cashToDeposit;
                 HasReachedGoal = true;
-                return 1;
+                return "GOAL_ACHIEVED";
             }
 
-            CurrentAmount += amount;
-            return 0;
+            CurrentAmount += cashToDeposit;
+            return "DEPOSITED";
         }
 
-        public int takeMoney(double amount)
+        public Boolean CanWithdrawCash(decimal cashTowithdrawal)
         {
-            if ((CurrentAmount - amount) < 0)
-                return -1;
+            return (CurrentAmount >= cashTowithdrawal);
+        }
 
-            CurrentAmount -= amount;
-            return 0;
+        public void WithdrawCash(decimal cashTowithdrawal)
+        {
+            if(CanWithdrawCash(cashTowithdrawal))
+            {
+                CurrentAmount -= cashTowithdrawal;
+            }
         }
 
         public override string ToString()
         {
-            return GoalName + " - Goal: " + GoalAmount + "€ Currently have: " + CurrentAmount + "€.";
+            return GoalName + " - Goal: " + GoalAmount + " euros - Currently have: " + CurrentAmount + " euros.";
         }
     }
 }

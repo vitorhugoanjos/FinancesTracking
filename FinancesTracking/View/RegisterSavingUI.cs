@@ -9,29 +9,10 @@ using FinancesTracking.Controller;
 
 namespace FinancesTracking.View
 {
-    public class RegisterSavingUI
+    public class RegisterSavingUI:BaseUI
     {
         private RegisterSavingController controller = new RegisterSavingController();
 
-        private User GetUser()
-        {
-            Console.WriteLine("Choose an  user: ");
-
-            foreach (User _user in Factory.GetFactory().GetUsersRepository().GetUsers())
-            {
-                Console.WriteLine(_user.Name);
-            }
-
-            string name = Console.ReadLine();
-
-            return Factory.GetFactory().GetUsersRepository().GetUser(name);
-        }
-
-        private String GetComment()
-        {
-            Console.WriteLine("Write a comment: ");
-            return Console.ReadLine();
-        }
 
         private String GetName()
         {
@@ -39,12 +20,17 @@ namespace FinancesTracking.View
             return Console.ReadLine();
         }
 
-        private double GetAmount(string type)
+        private decimal GetAmount(string type)
         {
-            double amount;
+            decimal amount;
             Console.WriteLine("Insert " + type + " amount: ");
-            Double.TryParse(Console.ReadLine(), out amount);
+            decimal.TryParse(Console.ReadLine(), out amount);
             return amount;
+        }
+
+        private Boolean isValid(decimal goalAmount, decimal initialAmount, User user)
+        {
+            return ((initialAmount < goalAmount) && (controller.CanCreateSaving(user, initialAmount)));
         }
 
         public void Run()
@@ -52,24 +38,24 @@ namespace FinancesTracking.View
             User user;
             string goalName;
             string coment;
-            double goalAmount;
-            double initialAmount;
+            decimal goalAmount;
+            decimal initialAmount;
 
-            Console.WriteLine(" << REGISTER SAVING >> ");
-
-            do
-            {
-                user = GetUser();
-
-            } while (user == null);
-
+           Header("REGISTER SAVING");
+            
+            user = GetUser();
             goalName = GetName();
             coment = GetComment();
             goalAmount = GetAmount("goal");
-            initialAmount = GetAmount("initial");
+
+            do
+            {
+                initialAmount = GetAmount("initial");
+            } while (!isValid(goalAmount, initialAmount, user));
 
             controller.CreateSaving(user,goalName,coment,goalAmount,initialAmount);
 
         }
+
     }
 }
