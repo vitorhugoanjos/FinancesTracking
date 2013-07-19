@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FinancesTracking.View.IncomesUI;
+using FinancesTracking.View.SavingsUI;
 
 namespace FinancesTracking.View
 {
@@ -37,11 +38,13 @@ namespace FinancesTracking.View
 
         private const int SHOW_USER_INCOMINGS = 12;
 
-        private const int SHOW_MONTH_INCOMINGS = 13;
+        private const int SHOW_SAVINGS = 13;
 
-        private const int SHOW_SAVINGS = 14;
+        private const int SHOW_USERS_SAVINGS = 14;
 
-        private const int SHOW_USERS_SAVINGS = 15;
+        private const int INSERT_SAVING_CASH = 15;
+
+        private const int TAKE_SAVING_CASH = 16;
 
 
         private FinancesTrackingUI() { }
@@ -68,7 +71,10 @@ namespace FinancesTracking.View
             Console.WriteLine("11. Show incomes");
             Console.WriteLine("12. Show user's incomes");
             Console.WriteLine("13. Show all savings");
-            Console.WriteLine("114. Show user's savings");
+            Console.WriteLine("14. Show user's savings");
+
+            Console.WriteLine("15. Insert cash into saving");
+            Console.WriteLine("16. Take cash from saving");
 
             Console.WriteLine("0. Exit");
 
@@ -148,12 +154,18 @@ namespace FinancesTracking.View
                             break;
 
                         case SHOW_SAVINGS:
-                            //TODO some code
+                            ShowAllSavingsUI showAllSavings = new ShowAllSavingsUI();
+                            showAllSavings.Run();
                             break;
 
                         case SHOW_USERS_SAVINGS:
                             ShowUserSavingsUI showUserSavings = new ShowUserSavingsUI();
                             showUserSavings.Run();
+                            break;
+
+                        case INSERT_SAVING_CASH:
+                            InsertSavingCashUI insertSavingCash = new InsertSavingCashUI();
+                            insertSavingCash.Run();
                             break;
 
                         case EXIT:

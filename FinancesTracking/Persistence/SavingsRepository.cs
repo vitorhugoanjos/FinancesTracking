@@ -36,5 +36,16 @@ namespace FinancesTracking.Persistence
         {
             return savings;
         }
+
+        public Model.Saving GetSaving(string name)
+        {
+            foreach(Model.Saving saving in savings)
+            {
+                if (saving.GoalName.Equals(name))
+                    return saving;
+            }
+
+            return null;
+        }
     }
 }

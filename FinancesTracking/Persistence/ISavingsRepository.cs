@@ -11,5 +11,6 @@ namespace FinancesTracking.Persistence
         void RegisterSaving(Model.Saving saving);
         void RemoveSaving(Model.Saving saving);
         List<Model.Saving> GetAllSavings();
+        Model.Saving GetSaving(string name);
     }
 }

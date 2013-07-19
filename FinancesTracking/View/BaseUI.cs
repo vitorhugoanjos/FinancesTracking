@@ -96,6 +96,27 @@ namespace FinancesTracking.View
             return user ;
         }
 
+        protected Saving GetSaving()
+        {
+            Saving saving;
+            do
+            {
+                Console.WriteLine("Choose a saving: ");
+
+                foreach (Saving _saving in Factory.GetFactory().GetSavingsRepository().GetAllSavings())
+                {
+                    Console.WriteLine(_saving);
+
+                }
+
+                string name = Console.ReadLine();
+                saving = Factory.GetFactory().GetSavingsRepository().GetSaving(name);
+
+            } while (saving == null);
+
+            return saving;
+        }
+
         protected String GetComment()
         {
             Console.WriteLine("Write a comment: ");
