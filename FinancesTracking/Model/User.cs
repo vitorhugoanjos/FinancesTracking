@@ -11,12 +11,15 @@ namespace FinancesTracking.Model
 
         public string Name { get; private set; }
 
-        public double Balance { get; private set; }
+        public decimal Balance { get; private set; }
 
-        public User(string name, double balance)
+        private FundsCheck checker;
+
+        public User(string name, decimal balance)
         {
             Name = name;
             Balance = balance;
+            checker = new FundsCheck(balance);
         }
 
         public void EditName(string name)
@@ -25,17 +28,23 @@ namespace FinancesTracking.Model
         }
 
 
-        public void UseMoney(double amount)
+        public void WithdrawCash(decimal amount)
         {
-            if (Balance - amount < 0)
-                throw new System.ArgumentOutOfRangeException("amount", "The amount can't be greater than the user's balance");
-            else
-                Balance -= amount;
+             if(checker.CanWithdraw(amount))
+             {
+                 Balance = checker.GetBalance();
+             }
         }
 
-        public void ReceiveMoney(double amount)
+        public Boolean CanWidthraw(decimal amount)
         {
-            Balance += amount;
+            return checker.CanWithdraw(amount);
+        }
+
+        public void DepositCash(decimal amount)
+        {
+            checker.MakeDeposit(amount);
+            Balance = checker.GetBalance();
         }
 
         public override string ToString()
